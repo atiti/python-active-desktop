@@ -54,9 +54,13 @@ def main():
     window.setWindowTitle("Active Desktop")
     
     if args.fullscreen == 1:
-    	window.showFullScreen()
-    else:
-        window.show()
+	window.setWindowState(Qt.WindowFullScreen)
+
+    window.setWindowFlags(window.windowFlags() | Qt.WindowStaysOnBottomHint | Qt.FramelessWindowHint)
+    window.setAttribute(Qt.WA_X11NetWmWindowTypeMenu, True)
+    #window.showFullScreen()
+       
+    window.show()
 
     sys.exit(app.exec_())
 
